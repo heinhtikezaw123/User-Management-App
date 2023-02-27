@@ -18,16 +18,19 @@
                             @csrf
                             <div class="row">
                                 <div class="col-4 offset-1">
-                                    {{-- @if (Auth::user()->image == null)
-                                        @if (Auth::user()->gender == 'male')
+                                    @if ($userList->image == null)
+                                        @if ($userList->gender == 'male')
                                             <img src="{{asset('image/default_user.png')}}" class="img-thumbnail shadow-sm" />
                                         @else
                                             <img src="{{asset('image/female_user.png')}}" class="img-thumbnail shadow-sm" />
                                         @endif
                                     @else
-                                        <img src="{{asset('storage/'.Auth::user()->image)}}" class="img-thumbnail shadow-sm" />
-                                    @endif --}}
-                                    <img src="{{asset('image/default_user.png')}}" class="img-thumbnail shadow-sm" />
+                                        <img src="{{asset('storage/'.$userList->image)}}" class="img-thumbnail"  />
+                                    @endif
+                                    {{-- <img src="{{asset('image/default_user.png')}}" class="img-thumbnail shadow-sm" /> --}}
+                                    <div class="row">
+                                        <input type="file" class="mt-4" name="image" id="">
+                                    </div>
                                 </div>
 
                                 <div class="row col-6">

@@ -80,8 +80,8 @@
                         </form>
                     </div>
                 </div>
-{{--
-                <div class="row my-2">
+
+                {{-- <div class="row my-2">
                     <div class="col-5">
                         <h3> Total   ( {{ $userList->total() }} )</h3>
                     </div>
@@ -91,7 +91,7 @@
                     <table class="table table-data2 text-center">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">image</th>
                                 <th scope="col">user name</th>
                                 <th scope="col">name</th>
                                 <th scope="col">role</th>
@@ -103,7 +103,17 @@
 
                             @foreach ($userList as $user )
                                 <tr class="tr-shadow">
-                                    <td>{{ $user->id }}</td>
+                                    <td class="col-1">
+                                        @if ($user->image == null)
+                                            @if ($user->gender == 'female')
+                                                img src="{{asset('image/female_user.png')}}" class="img-thumbnail shadow-sm" />
+                                            @else
+                                                <img src="{{asset('image/default_user.png')}}" class="img-thumbnail shadow-sm" />
+                                            @endif
+                                        @else
+                                            <img src="{{asset('storage/'.$user->image)}}" class="img-thumbnail"  />
+                                        @endif
+                                    </td>
                                     <td>{{ $user->user_name }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>
@@ -170,10 +180,6 @@
 
                                 </tr>
                             @endforeach
-
-
-
-
                         </tbody>
                     </table>
 

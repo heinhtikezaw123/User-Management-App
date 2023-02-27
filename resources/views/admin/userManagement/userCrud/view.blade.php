@@ -28,18 +28,17 @@
 
                         <div class="row">
                             <div class="col-3 offset-2">
-                                {{-- @if (Auth::user()->image == null)
-                                    @if (Auth::user()->gender == 'male')
+                                @if ($user->image == null)
+                                    @if ($user->gender == 'male')
                                         <img src="{{asset('image/default_user.png')}}" class="img-thumbnail shadow-sm" />
                                     @else
                                         <img src="{{asset('image/female_user.png')}}" class="img-thumbnail shadow-sm" />
                                     @endif
-
                                 @else
-                                    <img src="{{asset('storage/'.Auth::user()->image)}}" class="img-thumbnail"  />
-                                @endif --}}
+                                    <img src="{{asset('storage/'.$user->image)}}" class="img-thumbnail"  />
+                                @endif
 
-                                <img src="{{asset('image/default_user.png')}}" class="img-thumbnail shadow-sm" />
+                                {{-- <img src="{{asset('image/default_user.png')}}" class="img-thumbnail shadow-sm" /> --}}
 
 
                             </div>
