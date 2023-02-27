@@ -56,6 +56,18 @@ return [
             'throw' => false,
         ],
 
+        'do' => [
+            'driver' => 's3',
+            'key' => env('DO_ACCESS_KEY_ID'),
+            'secret' => env('DO_SECRET_ACCESS_KEY'),
+            'region' => env('DO_DEFAULT_REGION'),
+            'bucket' => env('DO_BUCKET'),
+            'folder' => env('DO_FOLDER'),
+            'endpoint' => env('DO_ENDPOINT'),
+            'throw' => false,
+    ],
+
+
     ],
 
     /*

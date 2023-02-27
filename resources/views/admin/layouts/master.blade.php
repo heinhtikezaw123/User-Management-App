@@ -82,6 +82,12 @@
                       </div>
                     </div>
                 </div>
+
+                <div class="mt-4 mb-4 ms-4 ">
+                    <a href="{{ route('admin#fileLists') }}" style="text-decoration: none" class="text-dark">
+                        <i class="fa-solid fa-file me-3"></i>Store File
+                    </a>
+                </div>
             </div>
         </aside>
         <!-- END MENU SIDEBAR-->
@@ -142,7 +148,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            {{-- @if (Auth::user()->image == null)
+                                            @if (Auth::user()->image == null)
                                                 @if (Auth::user()->gender == 'male')
                                                     <img src="{{asset('image/default_user.png')}}" class="img-thumbnail" />
                                                 @else
@@ -150,9 +156,9 @@
                                                 @endif
                                             @else
                                                 <img src="{{asset('storage/'.Auth::user()->image)}}"  />
-                                            @endif --}}
+                                            @endif
 
-                                            <img src="{{asset('image/default_user.png')}}" class="img-thumbnail" />
+                                            {{-- <img src="{{asset('image/default_user.png')}}" class="img-thumbnail" /> --}}
 
                                         </div>
                                         <div class="content">
@@ -162,7 +168,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        {{-- @if (Auth::user()->image == null)
+                                                        @if (Auth::user()->image == null)
                                                             @if (Auth::user()->gender == 'male')
                                                                 <img src="{{asset('image/default_user.png')}}" class="img-thumbnail" />
                                                             @else
@@ -170,8 +176,8 @@
                                                             @endif
                                                         @else
                                                             <img src="{{asset('storage/'.Auth::user()->image)}}"  />
-                                                        @endif --}}
-                                                        <img src="{{asset('image/default_user.png')}}" class="img-thumbnail" />
+                                                        @endif
+                                                        {{-- <img src="{{asset('image/default_user.png')}}" class="img-thumbnail" /> --}}
                                                     </a>
                                                 </div>
                                                 <div class="content">

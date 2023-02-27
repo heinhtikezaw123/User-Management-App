@@ -6,11 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "aws/aws-sdk-php": "^3.260",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.16",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "league/flysystem-aws-s3-v3": "^3.12",
         "livewire/livewire": "^2.11"
     },
     "require-dev": {
@@ -29,6 +31,8 @@
             "Database\\Seeders\\": "database/seeders/"
         }
     },
+
+
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"

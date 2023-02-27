@@ -9,6 +9,7 @@ use App\Models\RolePermission;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AdminUserController extends Controller
@@ -28,11 +29,9 @@ class AdminUserController extends Controller
 
     //create new user
     public function addUser(Request $request) {
-        // dd($request->toArray());
         $this->userValidationCheck($request);
         $data = $this->requestUserData($request);
         $data['password'] = Hash::make($data['password']);
-        // dd($data);
         User::create($data);
         return redirect()->route('admin#userList')->with(['userCreated' => 'New User Created Successfully!']);
     }
@@ -68,6 +67,21 @@ class AdminUserController extends Controller
     public function eidtUser(Request $request) {
         $this->editUserValidationCheck($request);
         $data = $this->getUserDataUpdate($request);
+        if($request->hasfile('image')) {
+           //getting image from data base
+           $dbImage = User::where('id',$request->id)->first();
+           $dbImage = $dbImage->image;
+
+           //delecting image if there is an image in database
+           if($dbImage != null) {
+               Storage::delete('public/'.$dbImage);
+           }
+
+           //storing image
+           $fileName = uniqid() . $request->file('image')->getClientOriginalName(); //getting image from user
+           $request->file('image')->storeAs('public',$fileName); //storing image in project
+           $data['image'] = $fileName; //storing image in database
+        }
         User::where('id',$request->id)->update($data);
         return redirect()->route('admin#userList')->with(['userUpdated' => 'User Updated Successfully!']);
     }
@@ -81,6 +95,7 @@ class AdminUserController extends Controller
             'phone' => 'required',
             'gender' => 'required',
             'roleId' => 'required',
+            'image' => 'mimes:png,jpg,jpeg,webp|file',
         ])->validate();
     }
 
@@ -101,8 +116,6 @@ class AdminUserController extends Controller
         User::where('id',$id)->delete();
         return redirect()->route('admin#userList')->with(['userDeleted' => 'User was deleted successfully!']);
     }
-
-
 
     //request user data
     private function requestUserData($request) {
